@@ -1,7 +1,6 @@
 'use strict'
 
 const store = require('../store.js')
-const events = require('../events/events.js')
 
 // Display an error message to the user
 const errorMessage = () => {
