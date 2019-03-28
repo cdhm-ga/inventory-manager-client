@@ -32,8 +32,6 @@ const signInSuccess = responseData => {
 // SIGN UP
 const signUpSuccess = () => {
   clearForms()
-  $('#sign-up-form').hide()
-  $('#sign-in-form').fadeIn(500)
 }
 
 // SIGN OUT
@@ -42,6 +40,8 @@ const signOutSuccess = () => {
   userFeedback('Sign out successful')
   store.user = null
   $('.nav-buttons').fadeOut(500)
+  $('#sign-up-form').hide()
+  $('#sign-in-form').show()
   $('#auth-forms').fadeIn(500)
 }
 

@@ -23,7 +23,8 @@ const onSignUp = event => {
 
   api.signUp(formData)
     .then(ui.signUpSuccess)
-    .then(() => onSignIn(event))
+    .then(() => api.signIn(formData))
+    .then(ui.signInSuccess)
     .catch(ui.errorMessage)
 }
 
