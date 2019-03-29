@@ -4,7 +4,7 @@ const showItemsTemplate = require('../templates/warehouse-item.handlebars')
 
 const getWarehouseItemsSuccess = responseData => {
   const showItemsHtml = showItemsTemplate({ items: responseData.items })
-  $('#warehouse-items').append(showItemsHtml)
+  $('#warehouse-items').html(showItemsHtml)
 }
 
 // Display an error message to the user
