@@ -15,10 +15,22 @@ const onAddItem = event => {
     .catch(ui.errorMessage)
 }
 
+const onIndexStorefrontItems = function (event) {
+  event.preventDefault()
+
+  api.index()
+    .then(ui.getStorefrontItemsSuccess)
+    .catch(ui.onIndexFailure)
+}
+
+const addHandlers = () => {
+  $('#refresh-button').on('click', onIndexStorefrontItems)
+}
 const eventHandlers = () => {
   $('#create-inventory-item-form').on('submit', onAddItem)
 }
 
 module.exports = {
+  addHandlers,
   eventHandlers
 }

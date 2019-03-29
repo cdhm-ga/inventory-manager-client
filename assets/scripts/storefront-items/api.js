@@ -1,4 +1,5 @@
 'use strict'
+
 const store = require('../store.js')
 const config = require('../config.js')
 
@@ -13,6 +14,17 @@ const createItem = formData => {
   })
 }
 
+const index = function () {
+  return $.ajax({
+    url: config.apiUrl + '/storefront-items',
+    method: 'GET',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
+
 module.exports = {
-  createItem
+  createItem,
+  index
 }
