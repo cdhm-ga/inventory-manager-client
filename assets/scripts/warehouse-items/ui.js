@@ -1,6 +1,6 @@
 'use strict'
 
-const showItemsTemplate = require('../templates/warehouse-items.handlebars')
+const showItemsTemplate = require('../templates/warehouse-item.handlebars')
 
 const getWareHouseItemsSuccess = responseData => {
   const showItemsHtml = showItemsTemplate({ items: responseData.items })
