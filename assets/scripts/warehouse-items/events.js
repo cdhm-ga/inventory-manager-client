@@ -4,8 +4,8 @@ const api = require('./api.js')
 const ui = require('./ui.js')
 
 const onNewStorefrontItem = () => {
-  api.getWareHouseItems()
-    .then(ui.getWareHouseItemsSuccess)
+  api.getWarehouseItems()
+    .then(ui.getWarehouseItemsSuccess)
     .catch(ui.errorMessage)
 }
 

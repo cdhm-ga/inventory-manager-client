@@ -2,7 +2,7 @@
 
 const showItemsTemplate = require('../templates/warehouse-item.handlebars')
 
-const getWareHouseItemsSuccess = responseData => {
+const getWarehouseItemsSuccess = responseData => {
   const showItemsHtml = showItemsTemplate({ items: responseData.items })
   $('#warehouse-items').append(showItemsHtml)
 }
@@ -21,5 +21,5 @@ const userFeedback = message => {
 
 module.exports = {
   errorMessage,
-  getWareHouseItemsSuccess
+  getWarehouseItemsSuccess
 }
