@@ -8,8 +8,10 @@
 
 const auth = require('./auth/events.js')
 const warehouseItems = require('./warehouse-items/events.js')
+const storefrontItems = require('./storefront-items/events.js')
 
 $(() => {
   auth.eventHandlers()
   warehouseItems.eventHandlers()
+  storefrontItems.eventHandlers()
 })
