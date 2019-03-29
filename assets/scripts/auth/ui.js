@@ -20,8 +20,8 @@ const signInSuccess = responseData => {
   // Store user data in `store.js`
   store.user = responseData.user
   clearForms()
-  // Show nav buttons that should only be visible to signed in users
-  $('.nav-buttons').fadeIn(500)
+  // Show menu button that should only be visible to signed in users
+  $('.menu-button').fadeIn(500)
   // Hide auth forms that should only be visible when not signed in
   $('#auth-forms').fadeOut(500)
   // TODO
@@ -39,7 +39,7 @@ const signOutSuccess = () => {
   $('#content').empty()
   userFeedback('Sign out successful')
   store.user = null
-  $('.nav-buttons').fadeOut(500)
+  $('.menu-button').fadeOut(500)
   $('#sign-up-form').hide()
   $('#sign-in-form').show()
   $('#auth-forms').fadeIn(500)
