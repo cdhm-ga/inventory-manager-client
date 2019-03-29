@@ -2,7 +2,7 @@
 
   {{log item}}
 
-  <div id="item-table">
+  <div id="item-table" data-id="{{item._id}}">
     <div>
         <div>Name</div>
         <div>Price</div>
@@ -10,11 +10,14 @@
       </div>
     </div>
       <div>
-        <div id="item-data" data-id="{{item.name}}">
+        <div id="item-data">
+          {{item.warehouseItem.name}}
         </div>
-        <div id="item-price" data-id="{{item.price}}">
+        <div id="item-price">
+          {{item.warehouseItem.price}}
         </div>
-        <div id="item-quantity" data-id="{{item.quantity}}">
+        <div id="item-quantity">
+          {{item.quantity}}
         </div>
       </div>
   </div>
