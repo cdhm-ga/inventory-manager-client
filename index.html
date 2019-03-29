@@ -4,59 +4,151 @@
 <head>
   <title>Inventory</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
   <!-- Do not add `link` tags-->
   <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
-
   <!-- Do not add `script` tags-->
-  <script src="public/vendor.js" type="text/javascript" charset="utf-8"
-    defer></script>
-  <script src="public/application.js" type="text/javascript" charset="utf-8"
-    defer></script>
+  <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+  <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
 </head>
 
 <body>
+  <header>
+    <div class="logo">
+      <h1>Power Inventory!</h1>
+    </div>
+    <div class="menu-button" style="display: none;">
+      <!-- Dropdown menu -->
+      <div id="dropdown-menu" class="dropdown">
+        <button class="button dropdown-toggle" type="button" id="menuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Menu
+        </button>
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" id="sign-out-button">Sign Out</a>
+          <a class="dropdown-item" id="change-password-button" data-toggle="modal" data-target="#change-password-modal">Change
+            Password</a>
+        </div>
+      </div>
+    </div>
+  </header>
 
-  <h1>Power Inventory!</h1>
+  <main>
+    <!-- User feeback container -->
+    <div class="user-feeback-container">
+      <p id="user-feeback" class="user-feedback"></p>
+    </div>
 
-  <!-- Authentication forms -->
-  <section class="form" id="auth-forms">
+    <span class="button" data-toggle="modal" data-target="#new-inventory-item-modal">
+      <span class="menu-choice">N</span>ew item
+    </span>
 
-    <!-- Sign in form -->
-    <form id="sign-in-form">
-      <h1><span class="header-1">Sign</span> <span class="header-2">In</span></h1>
-      <div class="form-group">
-        <input class="form-field" name="credentials[email]" placeholder="email"
-          type="email" required>
-      </div>
-      <div class="form-group">
-        <input class="form-field" name="credentials[password]" placeholder="password"
-          type="password" required>
-      </div>
-      <input class="button form-button" type="submit" value="Sign In">
-      <p>Don't have an account?<br><span class="sign-up-toggle">Sign Up</span></p>
-    </form>
+    <span class="button" id="refresh-button">
+      <span class="menu-choice">R</span>efresh
+    </span>
 
-    <!-- Sign up form -->
-    <form id="sign-up-form" style="display: none;">
-      <h1><span class="header-1">Sign</span> <span class="header-2">Up</span></h1>
-      <div class="form-group">
-        <input class="form-field" name="credentials[email]" placeholder="email"
-          type="email" required>
+    <!-- Handlebars container -->
+    <div id="storefront-table"></div>
+
+    <!-- New inventory item modal -->
+    <div class="modal fade" id="new-inventory-item-modal" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title">New Inventory Item</h1>
+          </div>
+          <div class="modal-body">
+            <div class="user-feedback-container">
+              <p id="new-inventory-item-feedback" class="user-feedback"></p>
+            </div>
+            <form id="create-inventory-item-form">
+              <div class="form-group">
+                <p class="form-field-label">Item</p>
+
+                <!-- Handlebars populates select options -->
+                <select id="warehouse-items">
+
+                </select>
+
+
+              </div>
+              <div class="form-group">
+                <p class="form-field-label">Quantity:</p>
+                <input class="form-field modal-form-field" name="storefrontItem[quantity]" type="number" min="0" required>
+              </div>
+              <div class="modal-button-container">
+                <button type="button" data-dismiss="modal" class="button form-button">Cancel</button>
+                <input type="submit" id="new-event-submit" class="button form-button modal-button" value="Add Item">
+              </div>
+            </form>
+          </div>
+        </div>
       </div>
-      <div class="form-group">
-        <input class="form-field" name="credentials[password]" placeholder="password"
-          type="password" required>
+    </div>
+
+    <!-- Authentication forms -->
+
+    <section class="form" id="auth-forms">
+
+      <!-- Sign in form -->
+      <form id="sign-in-form">
+        <h1><span class="header-1">Sign</span> <span class="header-2">In</span></h1>
+        <div class="form-group">
+          <input class="form-field" name="credentials[email]" placeholder="email" type="email" required>
+        </div>
+        <div class="form-group">
+          <input class="form-field" name="credentials[password]" placeholder="password" type="password" required>
+        </div>
+        <input class="button form-button" type="submit" value="Sign In">
+        <p>Don't have an account?<br><span class="sign-up-toggle">Sign Up</span></p>
+      </form>
+      <!-- Sign up form -->
+      <form id="sign-up-form" style="display: none;">
+        <h1><span class="header-1">Sign</span> <span class="header-2">Up</span></h1>
+        <div class="form-group">
+          <input class="form-field" name="credentials[email]" placeholder="email" type="email" required>
+        </div>
+        <div class="form-group">
+          <input class="form-field" name="credentials[password]" placeholder="password" type="password" required>
+        </div>
+        <div class="form-group">
+          <input class="form-field" name="credentials[password_confirmation]" placeholder="password confirmation" type="password" required>
+        </div>
+        <input class="button form-button" type="submit" value="Sign Up">
+        <p>Already have an account?<br><span class="sign-in-toggle">Sign
+            In</span></p>
+      </form>
+    </section>
+    <!-- Change password modal -->
+    <div class="modal" id="change-password-modal" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title"><span class="header-1">Change</span>
+              <span class="header-2">Password</span></h1>
+          </div>
+          <div class="modal-body">
+            <div class="feedback-box">
+              <p id="change-pw-feedback" class="user-feedback modal-feedback"></p>
+            </div>
+            <form id="change-password-form">
+              <div class="form-group">
+                <p class="form-field-label">Old password:</p>
+                <input class="form-field modal-form-field" name="passwords[old]" placeholder="Old password" type="password" required>
+              </div>
+              <div class="form-group">
+                <p class="form-field-label">New password:</p>
+                <input class="form-field modal-form-field" name="passwords[new]" placeholder="New password" type="password" required>
+              </div>
+              <!-- Consider adding client-side new password confirmation -->
+              <div class="modal-button-container">
+                <button type="button" data-dismiss="modal" id="change-password-cancel" class="button form-button">Cancel</button>
+                <input type="submit" id="change-password-submit" class="button form-button modal-button" value="Change Password">
+              </div>
+            </form>
+          </div>
+        </div>
       </div>
-      <div class="form-group">
-        <input class="form-field" name="credentials[password_confirmation]"
-          placeholder="password confirmation" type="password" required>
-      </div>
-      <input class="button form-button" type="submit" value="Sign Up">
-      <p>Already have an account?<br><span class="sign-in-toggle">Sign
-          In</span></p>
-    </form>
-  </section>
+    </div>
+  </main>
 </body>
 
 </html>
