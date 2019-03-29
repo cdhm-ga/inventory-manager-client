@@ -37,7 +37,7 @@
       <p id="user-feeback" class="user-feedback"></p>
     </div>
 
-    <span class="button" data-toggle="modal" data-target="#new-inventory-item-modal">
+    <span class="button" data-toggle="modal" data-target="#new-inventory-item-modal" id="new-inventory-item-button">
       <span class="menu-choice">N</span>ew item
     </span>
 
@@ -65,9 +65,8 @@
 
                 <!-- Handlebars populates select options -->
                 <select id="warehouse-items">
-
+                  <option value="" disabled selected>--Please choose an option--</option>
                 </select>
-
 
               </div>
               <div class="form-group">
