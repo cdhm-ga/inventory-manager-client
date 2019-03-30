@@ -24,7 +24,19 @@ const index = function () {
   })
 }
 
+const update = function (data, storeItemId) {
+  return $.ajax({
+    url: config.apiUrl + '/storefront-items/' + storeItemId,
+    method: 'PATCH',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data
+  })
+}
+
 module.exports = {
   createItem,
-  index
+  index,
+  update
 }

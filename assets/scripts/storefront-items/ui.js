@@ -39,9 +39,19 @@ const onIndexFailure = function () {
   $('form').trigger('reset')
 }
 
+const onUpdateSuccess = function () {
+  userFeedback('Item successfully updated')
+}
+
+const onUpdateFailure = function () {
+  userFeedback('Error on updating item')
+}
+
 module.exports = {
   createItemSuccess,
   errorMessage,
   getStorefrontItemsSuccess,
-  onIndexFailure
+  onIndexFailure,
+  onUpdateSuccess,
+  onUpdateFailure
 }
