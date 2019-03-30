@@ -33,7 +33,7 @@ const getStorefrontItemsSuccess = responseData => {
 }
 
 const onIndexFailure = function () {
-  $('#user-feedback').text('Error on getting recipes')
+  $('#user-feedback').text('Error on getting items')
   $('#user-feedback').removeClass()
   $('#user-feedback').addClass('failure')
   $('form').trigger('reset')
