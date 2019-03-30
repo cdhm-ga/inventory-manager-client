@@ -1,4 +1,5 @@
 'use strict'
+const showItemsTemplate = require('../templates/storefront_item.handlebars')
 
 // runs when storefront item is successfully created
 const createItemSuccess = formData => {
@@ -23,7 +24,24 @@ const errorMessage = () => {
   clearForms()
 }
 
+//
+const getStorefrontItemsSuccess = responseData => {
+  console.log(responseData)
+  $('#storefront-table').text('')
+  const showItemsHtml = showItemsTemplate({ items: responseData.items })
+  $('#storefront-table').append(showItemsHtml)
+}
+
+const onIndexFailure = function () {
+  $('#user-feedback').text('Error on getting recipes')
+  $('#user-feedback').removeClass()
+  $('#user-feedback').addClass('failure')
+  $('form').trigger('reset')
+}
+
 module.exports = {
   createItemSuccess,
-  errorMessage
+  errorMessage,
+  getStorefrontItemsSuccess,
+  onIndexFailure
 }

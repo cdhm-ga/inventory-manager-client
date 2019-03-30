@@ -1,0 +1,25 @@
+{{#each items as |item|}}
+
+  {{log item}}
+
+  <div id="item-table" data-id="{{item._id}}">
+    <div>
+        <div>Name</div>
+        <div>Price</div>
+        <div>Quantity</div>
+      </div>
+    </div>
+      <div>
+        <div id="item-data">
+          {{item.warehouseItem.name}}
+        </div>
+        <div id="item-price">
+          {{item.warehouseItem.price}}
+        </div>
+        <div id="item-quantity">
+          {{item.quantity}}
+        </div>
+      </div>
+  </div>
+
+{{/each}}
