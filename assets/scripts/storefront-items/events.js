@@ -3,16 +3,11 @@
 const getFormFields = require('../../../lib/get-form-fields.js')
 const api = require('./api.js')
 const ui = require('./ui.js')
-const store = require('../store.js')
 
 const onAddItem = event => {
   event.preventDefault()
-  console.log('event.target is: ', (event.target))
 
-  const form = event.target
-  const formData = getFormFields(form)
-  console.log(formData)
-  console.log(store.user.token)
+  const formData = getFormFields(event.target)
   api.createItem(formData)
     .then(ui.createItemSuccess)
     .catch(ui.errorMessage)
