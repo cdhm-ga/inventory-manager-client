@@ -5,20 +5,20 @@
 </div>
 
 {{#each items as |item|}}
-  <div id="item-div">
+  <div>
     <span>
-      <div id="item-name">
+      <div>
         {{item.warehouseItem.name}}
       </div>
-      <div id="item-price">
+      <div>
         {{item.warehouseItem.price}}
       </div>
-      <div id="item-quantity">
+      <div>
         {{item.quantity}}
       </div>
     </span>
     <span class="button delete-storefront-item-button" data-id="{{item._id}}">Remove</span>
-    <span class="button" data-toggle="modal" data-target="#update-inventory-item-modal" id="update-button">
+    <span class="button" data-toggle="modal" data-target="#update-inventory-item-modal">
       <span class="menu-choice">E</span>dit
     </span>
   </div>
@@ -32,7 +32,7 @@
         </div>
         <div class="modal-body">
           <div class="user-feedback-container">
-            <p id="update-inventory-item-feedback" class="user-feedback"></p>
+            <p class="user-feedback update-inventory-item-feedback"></p>
           </div>
           <div>
             <p>Name: {{item.warehouseItem.name}}</p>
