@@ -36,7 +36,7 @@ const onUpdateItem = function (event) {
 const onDeleteItem = function (event) {
   event.preventDefault()
 
-  const id = $(event.target).closest('#item-div').data('id')
+  const id = $(event.target).data('id')
 
   api.destroy(id)
     .then(ui.onDestroySuccess)
