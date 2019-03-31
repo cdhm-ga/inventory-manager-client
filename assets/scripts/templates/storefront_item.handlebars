@@ -6,17 +6,15 @@
 
 {{#each items as |item|}}
   <div>
-    <span>
-      <div>
-        {{item.warehouseItem.name}}
-      </div>
-      <div>
-        {{item.warehouseItem.price}}
-      </div>
-      <div>
-        {{item.quantity}}
-      </div>
-    </span>
+    <div>
+      {{item.warehouseItem.name}}
+    </div>
+    <div>
+      {{item.warehouseItem.price}}
+    </div>
+    <div>
+      {{item.quantity}}
+    </div>
     <span class="button delete-storefront-item-button" data-id="{{item._id}}">Remove</span>
     <span class="button" data-toggle="modal" data-target="#update-inventory-item-modal">
       <span class="menu-choice">E</span>dit
@@ -39,7 +37,7 @@
             <p>Price: {{item.warehouseItem.price}}</p>
             <p>Quantity: {{item.quantity}}</p>
           </div>
-          <form class="update-inventory-item-form" data-id="{{item._id}}" data-name="{{item.warehouseItem.name}}" data-price="{{item.warehouseItem.price}}" data-quantity="{{item.quantity}}">
+          <form class="update-inventory-item-form" data-id="{{item._id}}">
             <div class="form-group">
               <p class="form-field-label">Update Quantity:</p>
               <input class="form-field modal-form-field" name="storefrontItem[quantity]" type="number" min="0" required>

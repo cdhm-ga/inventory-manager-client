@@ -49,6 +49,7 @@ const eventHandlers = () => {
   $('#refresh-button').on('click', onIndexStorefrontItems)
   $('#storefront-table').on('submit', '.update-inventory-item-form', onUpdateItem)
   $('.delete-storefront-item-button').on('click', onDeleteItem)
+  $('.storefront-table').on('hidden.bs.modal', () => $('form').trigger('reset'))
 }
 
 module.exports = {
