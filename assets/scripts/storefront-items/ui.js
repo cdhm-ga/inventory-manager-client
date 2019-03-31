@@ -14,9 +14,7 @@ const userFeedback = message => {
 }
 
 const clearForms = () => {
-  $('#sign-up-form').trigger('reset')
-  $('#sign-in-form').trigger('reset')
-  $('#change-password-form').trigger('reset')
+  // TODO
 }
 
 const errorMessage = () => {
@@ -24,7 +22,6 @@ const errorMessage = () => {
   clearForms()
 }
 
-//
 const getStorefrontItemsSuccess = responseData => {
   console.log(responseData)
   $('#storefront-table').text('')
