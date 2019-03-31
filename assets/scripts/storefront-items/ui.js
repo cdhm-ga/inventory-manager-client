@@ -33,15 +33,25 @@ const getStorefrontItemsSuccess = responseData => {
 }
 
 const onIndexFailure = function () {
-  $('#user-feedback').text('Error on getting recipes')
+  $('#user-feedback').text('Error on getting items')
   $('#user-feedback').removeClass()
   $('#user-feedback').addClass('failure')
   $('form').trigger('reset')
+}
+
+const onUpdateSuccess = function () {
+  userFeedback('Item successfully updated')
+}
+
+const onUpdateFailure = function () {
+  userFeedback('Error on updating item')
 }
 
 module.exports = {
   createItemSuccess,
   errorMessage,
   getStorefrontItemsSuccess,
-  onIndexFailure
+  onIndexFailure,
+  onUpdateSuccess,
+  onUpdateFailure
 }

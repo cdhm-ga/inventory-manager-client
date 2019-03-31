@@ -7,6 +7,7 @@ const store = require('../store.js')
 
 const onAddItem = event => {
   event.preventDefault()
+  console.log('event.target is: ', (event.target))
 
   const form = event.target
   const formData = getFormFields(form)
@@ -25,14 +26,23 @@ const onIndexStorefrontItems = function (event) {
     .catch(ui.onIndexFailure)
 }
 
-const addHandlers = () => {
+const onUpdateItem = function (event) {
+  event.preventDefault()
+
+  const data = getFormFields(event.target)
+  console.log(data)
+  const storeItemId = $(event.target).data('id')
+  api.update(data, storeItemId)
+    .then(ui.onUpdateSuccess)
+    .catch(ui.onUpdateFailure)
 }
+
 const eventHandlers = () => {
   $('#create-inventory-item-form').on('submit', onAddItem)
   $('#refresh-button').on('click', onIndexStorefrontItems)
+  $('#storefront-table').on('submit', '.update-inventory-item-form', onUpdateItem)
 }
 
 module.exports = {
-  addHandlers,
   eventHandlers
 }
