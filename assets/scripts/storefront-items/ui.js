@@ -47,11 +47,18 @@ const onUpdateFailure = function () {
   userFeedback('Error on updating item')
 }
 
+const onDestroySuccess = function () {
+  $('#user-feedback').text('Successfully deleted item from inventory')
+  $('#user-feedback').removeClass()
+  $('#user-feedback').addClass('failure')
+}
+
 module.exports = {
   createItemSuccess,
   errorMessage,
   getStorefrontItemsSuccess,
   onIndexFailure,
   onUpdateSuccess,
-  onUpdateFailure
+  onUpdateFailure,
+  onDestroySuccess
 }
