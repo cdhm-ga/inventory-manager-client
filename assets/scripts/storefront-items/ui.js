@@ -23,7 +23,6 @@ const errorMessage = () => {
 }
 
 const getStorefrontItemsSuccess = responseData => {
-  console.log(responseData)
   $('#storefront-table').text('')
   const showItemsHtml = showItemsTemplate({ items: responseData.items })
   $('#storefront-table').append(showItemsHtml)
