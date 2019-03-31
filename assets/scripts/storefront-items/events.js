@@ -37,6 +37,7 @@ const onDeleteItem = function (event) {
   event.preventDefault()
 
   const id = $(event.target).closest('#item-div').data('id')
+
   api.destroy(id)
     .then(ui.onDestroySuccess)
     .catch(ui.errorMessage)
