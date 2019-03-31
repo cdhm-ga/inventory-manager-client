@@ -24,14 +24,14 @@ const index = function () {
   })
 }
 
-const update = function (data, storeItemId) {
+const update = function (formData, storeItemId) {
   return $.ajax({
     url: config.apiUrl + '/storefront-items/' + storeItemId,
     method: 'PATCH',
     headers: {
       Authorization: 'Token token=' + store.user.token
     },
-    data
+    data: formData
   })
 }
 
