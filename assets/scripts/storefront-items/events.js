@@ -37,10 +37,20 @@ const onUpdateItem = function (event) {
     .catch(ui.onUpdateFailure)
 }
 
+const onDeleteItem = function (event) {
+  event.preventDefault()
+
+  const id = $(event.target).closest('#item-div').data('id')
+  api.destroy(id)
+    .then(ui.onDestroySuccess)
+    .catch(ui.errorMessage)
+}
+
 const eventHandlers = () => {
   $('#create-inventory-item-form').on('submit', onAddItem)
   $('#refresh-button').on('click', onIndexStorefrontItems)
   $('#storefront-table').on('submit', '.update-inventory-item-form', onUpdateItem)
+  $('.storefront-table').on('click', onDeleteItem)
 }
 
 module.exports = {

@@ -35,8 +35,19 @@ const update = function (data, storeItemId) {
   })
 }
 
+const destroy = function (storeItemId) {
+  return $.ajax({
+    url: config.apiUrl + '/storefront-items/' + storeItemId,
+    method: 'DELETE',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
+
 module.exports = {
   createItem,
   index,
-  update
+  update,
+  destroy
 }
