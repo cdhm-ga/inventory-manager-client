@@ -8,6 +8,7 @@ const onAddItem = event => {
   event.preventDefault()
 
   const formData = getFormFields(event.target)
+
   api.createItem(formData)
     .then(ui.createItemSuccess)
     .catch(ui.errorMessage)
@@ -15,7 +16,7 @@ const onAddItem = event => {
 
 const onIndexStorefrontItems = function (event) {
   event.preventDefault()
-  console.log(event)
+
   api.index()
     .then(ui.getStorefrontItemsSuccess)
     .catch(ui.onIndexFailure)
