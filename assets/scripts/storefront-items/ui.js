@@ -4,6 +4,7 @@ const showItemsTemplate = require('../templates/storefront_item.handlebars')
 // runs when storefront item is successfully created
 const createItemSuccess = formData => {
   userFeedback('item added to your inventory')
+  clearForms()
 }
 
 // Function to display user feedback
@@ -14,9 +15,7 @@ const userFeedback = message => {
 }
 
 const clearForms = () => {
-  $('#sign-up-form').trigger('reset')
-  $('#sign-in-form').trigger('reset')
-  $('#change-password-form').trigger('reset')
+  $('.update-inventory-item-form').trigger('reset')
 }
 
 const errorMessage = () => {
@@ -24,9 +23,7 @@ const errorMessage = () => {
   clearForms()
 }
 
-//
 const getStorefrontItemsSuccess = responseData => {
-  console.log(responseData)
   $('#storefront-table').text('')
   const showItemsHtml = showItemsTemplate({ items: responseData.items })
   $('#storefront-table').append(showItemsHtml)
@@ -41,6 +38,8 @@ const onIndexFailure = function () {
 
 const onUpdateSuccess = function () {
   userFeedback('Item successfully updated')
+  $('#update-inventory-item-modal').modal('hide')
+  clearForms()
 }
 
 const onUpdateFailure = function () {

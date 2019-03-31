@@ -3,16 +3,12 @@
 const getFormFields = require('../../../lib/get-form-fields.js')
 const api = require('./api.js')
 const ui = require('./ui.js')
-const store = require('../store.js')
 
 const onAddItem = event => {
   event.preventDefault()
-  console.log('event.target is: ', (event.target))
 
-  const form = event.target
-  const formData = getFormFields(form)
-  console.log(formData)
-  console.log(store.user.token)
+  const formData = getFormFields(event.target)
+
   api.createItem(formData)
     .then(ui.createItemSuccess)
     .catch(ui.errorMessage)
@@ -20,7 +16,7 @@ const onAddItem = event => {
 
 const onIndexStorefrontItems = function (event) {
   event.preventDefault()
-  console.log(event)
+
   api.index()
     .then(ui.getStorefrontItemsSuccess)
     .catch(ui.onIndexFailure)
@@ -29,10 +25,11 @@ const onIndexStorefrontItems = function (event) {
 const onUpdateItem = function (event) {
   event.preventDefault()
 
-  const data = getFormFields(event.target)
-  console.log(data)
-  const storeItemId = $(event.target).data('id')
-  api.update(data, storeItemId)
+  const formData = getFormFields(event.target)
+  console.log('formData:', formData)
+  const id = $(event.target).data('id')
+
+  api.update(formData, id)
     .then(ui.onUpdateSuccess)
     .catch(ui.onUpdateFailure)
 }
@@ -40,7 +37,8 @@ const onUpdateItem = function (event) {
 const onDeleteItem = function (event) {
   event.preventDefault()
 
-  const id = $(event.target).closest('#item-div').data('id')
+  const id = $(event.target).data('id')
+
   api.destroy(id)
     .then(ui.onDestroySuccess)
     .catch(ui.errorMessage)
@@ -50,7 +48,8 @@ const eventHandlers = () => {
   $('#create-inventory-item-form').on('submit', onAddItem)
   $('#refresh-button').on('click', onIndexStorefrontItems)
   $('#storefront-table').on('submit', '.update-inventory-item-form', onUpdateItem)
-  $('.storefront-table').on('click', onDeleteItem)
+  $('.delete-storefront-item-button').on('click', onDeleteItem)
+  $('.storefront-table').on('hidden.bs.modal', () => $('form').trigger('reset'))
 }
 
 module.exports = {
