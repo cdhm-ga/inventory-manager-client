@@ -26,9 +26,10 @@ const onUpdateItem = function (event) {
   event.preventDefault()
 
   const formData = getFormFields(event.target)
-  const storeItemId = $(event.target).data('id')
+  console.log('formData:', formData)
+  const id = $(event.target).data('id')
 
-  api.update(formData, storeItemId)
+  api.update(formData, id)
     .then(ui.onUpdateSuccess)
     .catch(ui.onUpdateFailure)
 }
@@ -47,7 +48,7 @@ const eventHandlers = () => {
   $('#create-inventory-item-form').on('submit', onAddItem)
   $('#refresh-button').on('click', onIndexStorefrontItems)
   $('#storefront-table').on('submit', '.update-inventory-item-form', onUpdateItem)
-  $('.storefront-table').on('click', onDeleteItem)
+  $('.delete-storefront-item-button').on('click', onDeleteItem)
 }
 
 module.exports = {

@@ -24,9 +24,9 @@ const index = function () {
   })
 }
 
-const update = function (formData, storeItemId) {
+const update = function (formData, id) {
   return $.ajax({
-    url: config.apiUrl + '/storefront-items/' + storeItemId,
+    url: config.apiUrl + '/storefront-items/' + id,
     method: 'PATCH',
     headers: {
       Authorization: 'Token token=' + store.user.token
@@ -35,9 +35,9 @@ const update = function (formData, storeItemId) {
   })
 }
 
-const destroy = function (storeItemId) {
+const destroy = function (id) {
   return $.ajax({
-    url: config.apiUrl + '/storefront-items/' + storeItemId,
+    url: config.apiUrl + '/storefront-items/' + id,
     method: 'DELETE',
     headers: {
       Authorization: 'Token token=' + store.user.token
