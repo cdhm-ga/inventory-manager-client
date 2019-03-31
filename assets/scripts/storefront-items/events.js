@@ -25,10 +25,10 @@ const onIndexStorefrontItems = function (event) {
 const onUpdateItem = function (event) {
   event.preventDefault()
 
-  const data = getFormFields(event.target)
+  const formData = getFormFields(event.target)
   const storeItemId = $(event.target).data('id')
 
-  api.update(data, storeItemId)
+  api.update(formData, storeItemId)
     .then(ui.onUpdateSuccess)
     .catch(ui.onUpdateFailure)
 }
