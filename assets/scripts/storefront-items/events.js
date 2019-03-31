@@ -26,8 +26,8 @@ const onUpdateItem = function (event) {
   event.preventDefault()
 
   const data = getFormFields(event.target)
-  console.log(data)
   const storeItemId = $(event.target).data('id')
+
   api.update(data, storeItemId)
     .then(ui.onUpdateSuccess)
     .catch(ui.onUpdateFailure)
