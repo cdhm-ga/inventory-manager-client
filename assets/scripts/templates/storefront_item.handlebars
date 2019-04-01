@@ -1,57 +1,67 @@
-<div>
-  <div>Name</div>
-  <div>Price</div>
-  <div>Quantity</div>
-</div>
+<table>
+  <!-- Table header -->
+  <tr>
+    <th>Name</th>
+    <th>Price</th>
+    <th>Quantity</th>
+    <th></th>
+  </tr>
 
+  {{#each items as |item|}}
+    <!-- Table data -->
+    <tr>
+      <td>{{item.warehouseItem.name}}</td>
+      <td>{{item.warehouseItem.price}}</td>
+      <td>{{item.quantity}}</td>
+      <td class="button-column">
+        <div class="dropleft">
+          <button type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" data-toggle="modal" data-target="#update-inventory-item-modal-{{item._id}}">Edit</a>
+            <a class="dropdown-item delete-storefront-item-button" data-id="{{item._id}}">Remove</a>
+          </div>
+        </div>
+      </td>
+    </tr>
+  {{/each}}
+</table>
+
+<!-- Update inventory modals -->
 {{#each items as |item|}}
-  <div>
-    <div>
-      {{item.warehouseItem.name}}
-    </div>
-    <div>
-      {{item.warehouseItem.price}}
-    </div>
-    <div>
-      {{item.quantity}}
-    </div>
-    <span class="button delete-storefront-item-button" data-id="{{item._id}}">Remove</span>
-    <span class="button" data-toggle="modal" data-target="#update-inventory-item-modal">
-      <span class="menu-choice">E</span>dit
-    </span>
-  </div>
-
-  <!-- UPDATE modal -->
-  <div class="modal fade" id="update-inventory-item-modal" tabindex="-1" role="dialog">
+  <div class="modal fade" id="update-inventory-item-modal-{{item._id}}" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h1 class="modal-title">Edit Inventory Item</h1>
+          <h1 class="modal-title">Update Inventory Item</h1>
         </div>
         <div class="modal-body">
-          <div class="user-feedback-container">
-            <p class="user-feedback update-inventory-item-feedback"></p>
+
+          <!-- User feedback -->
+          <div class="feedback-box">
+            <p class="user-feedback modal-feedback"></p>
           </div>
+
+          <!-- Data display -->
           <div>
             <p>Name: {{item.warehouseItem.name}}</p>
             <p>Price: {{item.warehouseItem.price}}</p>
             <p>Quantity: {{item.quantity}}</p>
           </div>
+
+          <!-- Form -->
           <form class="update-inventory-item-form" data-id="{{item._id}}">
             <div class="form-group">
               <p class="form-field-label">Update Quantity:</p>
               <input class="form-field modal-form-field" name="storefrontItem[quantity]" type="number" min="0" required>
-              <div class="modal-button-container">
-                <button type="button" data-dismiss="modal" class="button form-button">Cancel</button>
-                <button type="submit" value="Update Item" class="update-item-button button form-button modal-button">Update</button>
-              </div>
+            </div>
+            <div class="modal-button-container">
+              <button type="button" data-dismiss="modal">Cancel</button>
+              <input type="submit" value="Update Event">
             </div>
           </form>
+
         </div>
       </div>
     </div>
   </div>
-
-  </div>
-
 {{/each}}
