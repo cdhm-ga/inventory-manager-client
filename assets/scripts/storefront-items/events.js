@@ -14,7 +14,7 @@ const onAddItem = event => {
       ui.createItemSuccess()
       reindex()
     })
-    .catch(ui.errorMessage)
+    .catch(ui.onCreateItemFailure)
 }
 
 const onIndexStorefrontItems = function (event) {
@@ -29,12 +29,11 @@ const onUpdateItem = function (event) {
   event.preventDefault()
 
   const formData = getFormFields(event.target)
-  console.log('formData:', formData)
   const id = $(event.target).data('id')
 
   api.update(formData, id)
     .then(function () {
-      ui.onUpdateSuccess()
+      ui.onUpdateSuccess(id)
       reindex()
     })
     .catch(ui.onUpdateFailure)
