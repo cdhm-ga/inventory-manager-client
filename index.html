@@ -2,10 +2,11 @@
 <html>
 
 <head>
-  <title>Inventory</title>
+  <title>Power Inventory!</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Do not add `link` tags-->
   <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+  <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
   <!-- Do not add `script` tags-->
   <script src="public/vendor.js" type="text/javascript" charset="utf-8"
     defer></script>
@@ -42,10 +43,10 @@
       <div class="table-controls">
         <span class="button" data-toggle="modal" data-target="#new-inventory-item-modal"
           id="new-inventory-item-button" style="display: none;">
-          <span class="menu-choice">N</span>ew item
+          [<span class="menu-choice">N</span>ew item]
         </span>
         <span class="button" id="refresh-button" style="display: none;">
-          <span class="menu-choice">R</span>efresh
+          [<span class="menu-choice">R</span>efresh]
         </span>
       </div>
 
@@ -95,11 +96,11 @@
 
     <!-- Authentication forms -->
 
-    <section class="form" id="auth-forms">
+    <section class="auth-form" id="auth-forms">
 
       <!-- Sign in form -->
       <form id="sign-in-form">
-        <h1><span class="header-1">Sign</span> <span class="header-2">In</span></h1>
+        <h1>Sign In</h1>
         <div class="form-group">
           <input class="form-field" name="credentials[email]" placeholder="email"
             type="email" required>
@@ -109,11 +110,11 @@
             placeholder="password" type="password" required>
         </div>
         <input class="button form-button" type="submit" value="Sign In">
-        <p>Don't have an account?<br><span class="sign-up-toggle">Sign Up</span></p>
+        <p>Don't have an account?<br><span class="auth-toggle sign-up-toggle">Sign Up</span></p>
       </form>
       <!-- Sign up form -->
       <form id="sign-up-form" style="display: none;">
-        <h1><span class="header-1">Sign</span> <span class="header-2">Up</span></h1>
+        <h1>Sign Up</h1>
         <div class="form-group">
           <input class="form-field" name="credentials[email]" placeholder="email"
             type="email" required>
@@ -127,7 +128,7 @@
             placeholder="password confirmation" type="password" required>
         </div>
         <input class="button form-button" type="submit" value="Sign Up">
-        <p>Already have an account?<br><span class="sign-in-toggle">Sign
+        <p>Already have an account?<br><span class="auth-toggle sign-in-toggle">Sign
             In</span></p>
       </form>
     </section>
