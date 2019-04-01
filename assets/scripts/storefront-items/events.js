@@ -29,7 +29,6 @@ const onUpdateItem = function (event) {
   event.preventDefault()
 
   const formData = getFormFields(event.target)
-  console.log('formData:', formData)
   const id = $(event.target).data('id')
 
   api.update(formData, id)
