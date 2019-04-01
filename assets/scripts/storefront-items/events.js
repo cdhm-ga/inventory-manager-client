@@ -17,14 +17,6 @@ const onAddItem = event => {
     .catch(ui.onCreateItemFailure)
 }
 
-const onIndexStorefrontItems = function (event) {
-  event.preventDefault()
-
-  api.index()
-    .then(ui.getStorefrontItemsSuccess)
-    .catch(ui.onIndexFailure)
-}
-
 const onUpdateItem = function (event) {
   event.preventDefault()
 
@@ -58,9 +50,15 @@ const reindex = () => {
     .catch(ui.errorMessage)
 }
 
+const refresh = () => {
+  api.index()
+    .then(ui.refreshSuccess)
+    .catch(ui.errorMessage)
+}
+
 const eventHandlers = () => {
   $('#create-inventory-item-form').on('submit', onAddItem)
-  $('#refresh-button').on('click', onIndexStorefrontItems)
+  $('#refresh-button').on('click', refresh)
   $('#storefront-table').on('submit', '.update-inventory-item-form', onUpdateItem)
   $('#storefront-table').on('click', '.delete-storefront-item-button', onDeleteItem)
   $('.storefront-table').on('hidden.bs.modal', () => $('form').trigger('reset'))

@@ -40,7 +40,7 @@ const signOutSuccess = () => {
   $('#content').empty()
   userFeedback('Sign out successful')
   store.user = null
-  $('.menu-button').show()
+  $('.menu-button').hide()
   $('#sign-up-form, #refresh-button, #new-inventory-item-button, #storefront-table').hide()
   $('#storefront-table').text('')
   $('#sign-in-form').show()

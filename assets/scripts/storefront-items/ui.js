@@ -58,6 +58,10 @@ const onDestroySuccess = function () {
   userFeedback('Item removed from inventory.')
 }
 
+const refreshSuccess = () => {
+  userFeedback('Inventory is up to date.')
+}
+
 module.exports = {
   createItemSuccess,
   errorMessage,
@@ -66,5 +70,6 @@ module.exports = {
   onUpdateSuccess,
   onUpdateFailure,
   onDestroySuccess,
-  onCreateItemFailure
+  onCreateItemFailure,
+  refreshSuccess
 }
