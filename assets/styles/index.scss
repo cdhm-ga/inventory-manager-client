@@ -36,6 +36,17 @@ form {
   }
 }
 
+header {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  padding: .5rem;
+}
+
+p {
+  margin: 0;
+}
+
 table {
   border-collapse: collapse;
   width: 100%;
@@ -86,6 +97,23 @@ table {
   &:active {
     background-color: $yellow;
   }
+}
+
+.inventory-table-controls {
+  align-items: center;
+  display: flex;
+  height: 50px;
+  justify-content: space-between;
+  padding: .5rem;
+}
+
+.table-controls {
+  // flex-grow: 1;
+  padding: .5rem;
+}
+.user-feeback-container {
+  flex-grow: 1;
+  text-align: center;
 }
 
 .storefront-table {

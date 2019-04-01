@@ -32,19 +32,21 @@
   </header>
 
   <main>
-    <!-- User feeback container -->
-    <div class="user-feeback-container">
-      <p id="user-feeback" class="user-feedback"></p>
+    <div class="inventory-table-controls">
+      <!-- User feeback container -->
+      <div class="table-controls">
+        <span class="button" data-toggle="modal" data-target="#new-inventory-item-modal" id="new-inventory-item-button" style="display: none;">
+          <span class="menu-choice">N</span>ew item
+        </span>
+
+        <span class="button" id="refresh-button" style="display: none;">
+          <span class="menu-choice">R</span>efresh
+        </span>
+      </div>
+      <div class="user-feeback-container">
+        <p id="user-feeback" class="user-feedback"></p>
+      </div>
     </div>
-
-    <span class="button" data-toggle="modal" data-target="#new-inventory-item-modal" id="new-inventory-item-button">
-      <span class="menu-choice">N</span>ew item
-    </span>
-
-    <span class="button" id="refresh-button">
-      <span class="menu-choice">R</span>efresh
-    </span>
-
     <!-- Handlebars container -->
     <div id="storefront-table" class="storefront-table"></div>
 
