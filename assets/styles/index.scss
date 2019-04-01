@@ -19,16 +19,16 @@ $white: white;
 body {
   background-color: $navy;
   color: $white;
-  font-family: monospace;
+  font-family: 'Press Start 2P', cursive;
 }
 
 form {
   .auth-toggle {
-    color: $teal;
+    color: $aqua;
     user-select: none;
 
     &:hover {
-      color: $aqua;
+      color: $purple;
     }
 
     &:active {
@@ -39,6 +39,8 @@ form {
 
 header {
   align-items: center;
+  background-color: $black;
+  color: $aqua;
   display: flex;
   justify-content: space-between;
   padding: 0.5rem;
@@ -60,7 +62,7 @@ table {
   }
 
   th {
-    background-color: $aqua;
+    background-color: $purple;
     border-right: 4px solid $white;
     color: $black;
     padding: 8px;
@@ -77,26 +79,33 @@ table {
   }
 }
 
-.modal {
-  color: $blue;
-}
-
-.form {
+.auth-form {
+  border: 4px double $white;
+  box-shadow: 20px 20px $black;
+  color: $yellow;
   display: flex;
   justify-content: center;
+  margin: 2rem;
+  padding: 1rem;
   text-align: center;
 }
 
 .button {
-  background-color: $teal;
   border: 0;
+  background-color: $purple;
   color: $black;
   display: inline-block;
   font-size: 16px;
-  margin: 0 0.5rem;
-  padding: 0.25rem 1rem;
+  margin: 0;
+  // padding: 0.25rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
   text-align: center;
   text-decoration: none;
+
+  .menu-choice {
+    color: $yellow;
+  }
 
   &:hover {
     background-color: $aqua;
@@ -115,18 +124,34 @@ table {
 }
 
 .dropdown-menu {
+  background-color: $navy;
+  border: 4px double $white;
   border-radius: 0;
+  color: $yellow;
+
   .dropdown-item {
     user-select: none;
+
+    &:hover {
+      background-color: $gray;
+    }
   }
 }
 
 .inventory-table-controls {
   align-items: center;
+  background-color: $gray;
   display: flex;
   height: 50px;
   justify-content: space-between;
   padding: 0.5rem;
+}
+
+.modal-content {
+  background-color: $navy;
+  border: 4px double $white;
+  border-radius: 0;
+  box-shadow: 20px 20px $black;
 }
 
 .modal-feedback {
@@ -138,8 +163,11 @@ table {
   text-align: center;
 }
 
+.form-button {
+  margin-bottom: 0.5rem;
+}
+
 .table-controls {
-  // flex-grow: 1;
   padding: 0.5rem;
 }
 
@@ -151,5 +179,7 @@ table {
 .storefront-table {
   display: flex;
   justify-content: center;
-  margin: 2.5rem;
+  margin-left: 2.5rem;
+  margin-right: 2.5rem;
+  margin-top: 1rem;
 }
