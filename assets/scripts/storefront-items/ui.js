@@ -26,6 +26,7 @@ const errorMessage = () => {
 const getStorefrontItemsSuccess = responseData => {
   $('#storefront-table').text('')
   const showItemsHtml = showItemsTemplate({ items: responseData.items })
+  $('#storefornt-table').show()
   $('#storefront-table').append(showItemsHtml)
 }
 
