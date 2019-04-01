@@ -16,7 +16,7 @@ const errorMessage = () => {
 const userFeedback = message => {
   $('#new-inventory-item-feedback').text(message)
   $('#new-inventory-item-feedback').show()
-  setTimeout(() => $('#new-inventory-item-feedback').fadeOut(500), 2500)
+  setTimeout(() => $('#new-inventory-item-feedback').hide(), 2500)
 }
 
 module.exports = {

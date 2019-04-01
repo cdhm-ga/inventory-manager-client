@@ -34,7 +34,7 @@ const onUpdateItem = function (event) {
 
   api.update(formData, id)
     .then(function () {
-      ui.onUpdateSuccess()
+      ui.onUpdateSuccess(id)
       reindex()
     })
     .catch(ui.onUpdateFailure)
