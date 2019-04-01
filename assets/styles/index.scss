@@ -26,6 +26,7 @@ form {
   .auth-toggle {
     color: $teal;
     user-select: none;
+
     &:hover {
       color: $aqua;
     }
@@ -40,7 +41,7 @@ header {
   align-items: center;
   display: flex;
   justify-content: space-between;
-  padding: .5rem;
+  padding: 0.5rem;
 }
 
 p {
@@ -50,20 +51,24 @@ p {
 table {
   border-collapse: collapse;
   width: 100%;
+
   td {
     border-right: 4px solid $white;
     padding: 8px;
   }
+
   th {
     background-color: $aqua;
     color: $black;
     padding: 8px;
   }
+
   tr {
     &:hover {
       background-color: $gray;
     }
   }
+
   .button-column {
     border-right: 0;
   }
@@ -99,19 +104,43 @@ table {
   }
 }
 
+.change-pw-success {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.dropdown-menu {
+  border-radius: 0;
+  .dropdown-item {
+    user-select: none;
+  }
+}
+
 .inventory-table-controls {
   align-items: center;
   display: flex;
   height: 50px;
   justify-content: space-between;
-  padding: .5rem;
+  padding: 0.5rem;
+}
+
+.modal-feedback {
+  padding: 1rem;
+}
+
+.feedback-box {
+  height: 30px;
+  text-align: center;
 }
 
 .table-controls {
   // flex-grow: 1;
-  padding: .5rem;
+  padding: 0.5rem;
 }
-.user-feeback-container {
+
+.user-feedback-container {
   flex-grow: 1;
   text-align: center;
 }

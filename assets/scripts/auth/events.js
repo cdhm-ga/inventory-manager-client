@@ -16,7 +16,6 @@ const onSignIn = event => {
       ui.signInSuccess(responseData)
       events.reindex()
     })
-    // .then(ui.signInSuccess)
     .catch(ui.errorMessage)
 }
 
@@ -53,6 +52,10 @@ const onChangePassword = event => {
     .catch(ui.changePasswordError)
 }
 
+const showChangePassword = () => {
+  ui.onShowChangePassword()
+}
+
 // Toggle showing of sign up and sign in
 const onSignInToggle = () => ui.signInToggle()
 const onSignUpToggle = () => ui.signUpToggle()
@@ -61,6 +64,7 @@ const eventHandlers = () => {
   $('#sign-in-form').on('submit', onSignIn)
   $('#sign-up-form').on('submit', onSignUp)
   $('#sign-out-button').on('click', onSignOut)
+  $('#change-password-button').on('click', showChangePassword)
   $('#change-password-form').on('submit', onChangePassword)
 
   // Event listeners to toggle showing of sign up and sign in
