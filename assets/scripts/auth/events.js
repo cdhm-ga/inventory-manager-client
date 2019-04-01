@@ -3,6 +3,7 @@
 const getFormFields = require('../../../lib/get-form-fields.js')
 const api = require('./api.js')
 const ui = require('./ui.js')
+const events = require('../storefront-items/events.js')
 
 // SIGN IN
 const onSignIn = event => {
@@ -11,7 +12,10 @@ const onSignIn = event => {
   const formData = getFormFields(event.target)
 
   api.signIn(formData)
-    .then(ui.signInSuccess)
+    .then(function (responseData) {
+      ui.signInSuccess(responseData)
+      events.reindex()
+    })
     .catch(ui.errorMessage)
 }
 
@@ -23,7 +27,8 @@ const onSignUp = event => {
 
   api.signUp(formData)
     .then(ui.signUpSuccess)
-    .then(() => onSignIn(event))
+    .then(() => api.signIn(formData))
+    .then(ui.signInSuccess)
     .catch(ui.errorMessage)
 }
 
@@ -47,6 +52,10 @@ const onChangePassword = event => {
     .catch(ui.changePasswordError)
 }
 
+const showChangePassword = () => {
+  ui.onShowChangePassword()
+}
+
 // Toggle showing of sign up and sign in
 const onSignInToggle = () => ui.signInToggle()
 const onSignUpToggle = () => ui.signUpToggle()
@@ -55,6 +64,7 @@ const eventHandlers = () => {
   $('#sign-in-form').on('submit', onSignIn)
   $('#sign-up-form').on('submit', onSignUp)
   $('#sign-out-button').on('click', onSignOut)
+  $('#change-password-button').on('click', showChangePassword)
   $('#change-password-form').on('submit', onChangePassword)
 
   // Event listeners to toggle showing of sign up and sign in

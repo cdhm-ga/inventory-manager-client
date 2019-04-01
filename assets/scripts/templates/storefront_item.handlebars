@@ -1,0 +1,67 @@
+<table>
+  <!-- Table header -->
+  <tr>
+    <th>Name</th>
+    <th>Price</th>
+    <th>Quantity</th>
+    <th class="button-column"></th>
+  </tr>
+
+  {{#each items as |item|}}
+    <!-- Table data -->
+    <tr>
+      <td>{{item.warehouseItem.name}}</td>
+      <td>{{item.warehouseItem.price}}</td>
+      <td>{{item.quantity}}</td>
+      <td class="button-column">
+        <div class="dropleft">
+          <button type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">...</button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" data-toggle="modal" data-target="#update-inventory-item-modal-{{item._id}}">Edit</a>
+            <a class="dropdown-item delete-storefront-item-button" data-id="{{item._id}}">Remove</a>
+          </div>
+        </div>
+      </td>
+    </tr>
+  {{/each}}
+</table>
+
+<!-- Update inventory modals -->
+{{#each items as |item|}}
+  <div class="modal" data-backdrop="false" id="update-inventory-item-modal-{{item._id}}" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title">Update Inventory Item</h1>
+        </div>
+        <div class="modal-body">
+
+          <!-- User feedback -->
+          <div class="feedback-box">
+            <p class="user-feedback modal-feedback"></p>
+          </div>
+
+          <!-- Data display -->
+          <div>
+            <p>Name: {{item.warehouseItem.name}}</p>
+            <p>Price: {{item.warehouseItem.price}}</p>
+            <p>Quantity: {{item.quantity}}</p>
+          </div>
+
+          <!-- Form -->
+          <form class="update-inventory-item-form" data-id="{{item._id}}">
+            <div class="form-group">
+              <p class="form-field-label">Update Quantity:</p>
+              <input class="form-field modal-form-field" name="storefrontItem[quantity]" type="number" min="0" required>
+            </div>
+            <div class="modal-button-container">
+              <button type="button" data-dismiss="modal">Cancel</button>
+              <input type="submit" value="Update Event">
+            </div>
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
+{{/each}}

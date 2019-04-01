@@ -1,1 +1,155 @@
 @import '~bootstrap/scss/bootstrap';
+$black: black;
+$maroon: maroon;
+$green: green;
+$olive: olive;
+$navy: navy;
+$purple: purple;
+$teal: teal;
+$silver: silver;
+$gray: gray;
+$red: red;
+$lime: lime;
+$yellow: yellow;
+$blue: blue;
+$fuchsia: fuchsia;
+$aqua: aqua;
+$white: white;
+
+body {
+  background-color: $navy;
+  color: $white;
+  font-family: monospace;
+}
+
+form {
+  .auth-toggle {
+    color: $teal;
+    user-select: none;
+
+    &:hover {
+      color: $aqua;
+    }
+
+    &:active {
+      color: $yellow;
+    }
+  }
+}
+
+header {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem;
+}
+
+p {
+  margin: 0;
+}
+
+table {
+  border-left: 4px solid $white;
+  border-right: 4px solid $white;
+  border-collapse: collapse;
+  width: 100%;
+
+  td {
+    border-right: 4px solid $white;
+    padding: 8px;
+  }
+
+  th {
+    background-color: $aqua;
+    border-right: 4px solid $white;
+    color: $black;
+    padding: 8px;
+  }
+
+  tr {
+    &:hover {
+      background-color: $gray;
+    }
+  }
+
+  .button-column {
+    border-right: 0;
+  }
+}
+
+.modal {
+  color: $blue;
+}
+
+.form {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.button {
+  background-color: $teal;
+  border: 0;
+  color: $black;
+  display: inline-block;
+  font-size: 16px;
+  margin: 0 0.5rem;
+  padding: 0.25rem 1rem;
+  text-align: center;
+  text-decoration: none;
+
+  &:hover {
+    background-color: $aqua;
+  }
+
+  &:active {
+    background-color: $yellow;
+  }
+}
+
+.change-pw-success {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.dropdown-menu {
+  border-radius: 0;
+  .dropdown-item {
+    user-select: none;
+  }
+}
+
+.inventory-table-controls {
+  align-items: center;
+  display: flex;
+  height: 50px;
+  justify-content: space-between;
+  padding: 0.5rem;
+}
+
+.modal-feedback {
+  padding: 1rem;
+}
+
+.feedback-box {
+  height: 30px;
+  text-align: center;
+}
+
+.table-controls {
+  // flex-grow: 1;
+  padding: 0.5rem;
+}
+
+.user-feedback-container {
+  flex-grow: 1;
+  text-align: center;
+}
+
+.storefront-table {
+  display: flex;
+  justify-content: center;
+  margin: 2.5rem;
+}

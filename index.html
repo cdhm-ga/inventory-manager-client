@@ -1,17 +1,179 @@
 <!DOCTYPE html>
 <html>
-    <head>
-      <title>Inventory</title>
-      <meta name="viewport" content="width=device-width, initial-scale=1">
 
-      <!-- Do not add `link` tags-->
-      <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+<head>
+  <title>Inventory</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Do not add `link` tags-->
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+  <!-- Do not add `script` tags-->
+  <script src="public/vendor.js" type="text/javascript" charset="utf-8"
+    defer></script>
+  <script src="public/application.js" type="text/javascript" charset="utf-8"
+    defer></script>
+</head>
 
-      <!-- Do not add `script` tags-->
-      <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
-      <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
-    </head>
-    <body>
+<body>
+  <header>
+    <div class="logo">
       <h1>Power Inventory!</h1>
-    </body>
+    </div>
+    <div class="menu-button" style="display: none;">
+      <!-- Dropdown menu -->
+      <div id="dropdown-menu" class="dropdown">
+        <button class="button dropdown-toggle" type="button" id="menuButton"
+          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Menu
+        </button>
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" id="sign-out-button">Sign Out</a>
+          <a class="dropdown-item" id="change-password-button" data-toggle="modal"
+            data-target="#change-password-modal">Change
+            Password</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="inventory-table-controls">
+
+      <!-- Table buttons -->
+      <div class="table-controls">
+        <span class="button" data-toggle="modal" data-target="#new-inventory-item-modal"
+          id="new-inventory-item-button" style="display: none;">
+          <span class="menu-choice">N</span>ew item
+        </span>
+        <span class="button" id="refresh-button" style="display: none;">
+          <span class="menu-choice">R</span>efresh
+        </span>
+      </div>
+
+      <!-- User feeback container -->
+      <div class="user-feedback-container">
+        <p id="user-feedback" class="user-feedback"></p>
+      </div>
+    </div>
+    <!-- Handlebars container -->
+    <div id="storefront-table" class="storefront-table"></div>
+
+    <!-- New inventory item modal -->
+    <div class="modal" data-backdrop="false" id="new-inventory-item-modal" tabindex="-1"
+      role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title">New Inventory Item</h1>
+          </div>
+          <div class="modal-body">
+            <div class="user-feedback-container">
+              <p id="new-inventory-item-feedback" class="user-feedback"></p>
+            </div>
+            <form id="create-inventory-item-form">
+              <div class="form-group">
+                <p class="form-field-label">Item</p>
+
+                <!-- Handlebars populates select options -->
+                <select name="storefrontItem[warehouseItem]" id="warehouse-items"></select>
+
+              </div>
+              <div class="form-group">
+                <p class="form-field-label">Quantity:</p>
+                <input class="form-field modal-form-field" name="storefrontItem[quantity]"
+                  type="number" min="0" required>
+              </div>
+              <div class="modal-button-container">
+                <button type="button" data-dismiss="modal" class="button form-button">Cancel</button>
+                <input type="submit" id="new-event-submit" class="button form-button modal-button"
+                  value="Add Item">
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Authentication forms -->
+
+    <section class="form" id="auth-forms">
+
+      <!-- Sign in form -->
+      <form id="sign-in-form">
+        <h1><span class="header-1">Sign</span> <span class="header-2">In</span></h1>
+        <div class="form-group">
+          <input class="form-field" name="credentials[email]" placeholder="email"
+            type="email" required>
+        </div>
+        <div class="form-group">
+          <input class="form-field" name="credentials[password]"
+            placeholder="password" type="password" required>
+        </div>
+        <input class="button form-button" type="submit" value="Sign In">
+        <p>Don't have an account?<br><span class="sign-up-toggle">Sign Up</span></p>
+      </form>
+      <!-- Sign up form -->
+      <form id="sign-up-form" style="display: none;">
+        <h1><span class="header-1">Sign</span> <span class="header-2">Up</span></h1>
+        <div class="form-group">
+          <input class="form-field" name="credentials[email]" placeholder="email"
+            type="email" required>
+        </div>
+        <div class="form-group">
+          <input class="form-field" name="credentials[password]"
+            placeholder="password" type="password" required>
+        </div>
+        <div class="form-group">
+          <input class="form-field" name="credentials[password_confirmation]"
+            placeholder="password confirmation" type="password" required>
+        </div>
+        <input class="button form-button" type="submit" value="Sign Up">
+        <p>Already have an account?<br><span class="sign-in-toggle">Sign
+            In</span></p>
+      </form>
+    </section>
+    <!-- Change password modal -->
+    <div class="modal" data-backdrop="false" id="change-password-modal" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title"><span class="header-1">Change</span>
+              <span class="header-2">Password</span></h1>
+          </div>
+
+          <div class="modal-body" id="change-pw-body">
+            <div class="feedback-box">
+              <p id="change-pw-feedback" class="modal-feedback"></p>
+            </div>
+            <form id="change-password-form">
+              <div class="form-group">
+                <p class="form-field-label">Old password:</p>
+                <input class="form-field modal-form-field" name="passwords[old]"
+                  placeholder="Old password" type="password" required>
+              </div>
+              <div class="form-group">
+                <p class="form-field-label">New password:</p>
+                <input class="form-field modal-form-field" name="passwords[new]"
+                  placeholder="New password" type="password" required>
+              </div>
+              <!-- Consider adding client-side new password confirmation -->
+              <div class="modal-button-container">
+                <button type="button" data-dismiss="modal" id="change-password-cancel"
+                  class="button form-button">Cancel</button>
+                <input type="submit" id="change-password-submit" class="button form-button modal-button"
+                  value="Change Password">
+              </div>
+            </form>
+          </div>
+
+          <div class="modal-body change-pw-success" id="change-pw-success" style="display: none;">
+            <p class="modal-feedback">Password changed successfully.</p>
+            <button type="button" data-dismiss="modal" class="button form-button">OK</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </main>
+</body>
+
 </html>
