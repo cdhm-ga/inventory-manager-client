@@ -49,6 +49,8 @@ p {
 }
 
 table {
+  border-left: 4px solid $white;
+  border-right: 4px solid $white;
   border-collapse: collapse;
   width: 100%;
 

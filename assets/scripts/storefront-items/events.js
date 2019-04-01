@@ -14,7 +14,7 @@ const onAddItem = event => {
       ui.createItemSuccess()
       reindex()
     })
-    .catch(ui.errorMessage)
+    .catch(ui.onCreateItemFailure)
 }
 
 const onIndexStorefrontItems = function (event) {

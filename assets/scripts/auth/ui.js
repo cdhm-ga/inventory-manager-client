@@ -76,8 +76,7 @@ const signUpToggle = () => {
 // Displays user feedback on change password modal
 const changePasswordError = () => {
   $('#change-pw-feedback').text('Something went wrong.')
-  $('#change-pw-feedback').show()
-  setTimeout(() => $('#change-pw-feedback').hide(), 5000)
+  setTimeout(() => $('#change-pw-feedback').text(''), 5000)
   clearForms()
 }
 

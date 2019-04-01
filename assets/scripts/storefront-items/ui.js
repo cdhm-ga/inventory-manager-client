@@ -45,7 +45,13 @@ const onUpdateSuccess = function (id) {
 }
 
 const onUpdateFailure = function () {
-  userFeedback('Error on updating item')
+  $('#modal-feedback').text('Error updating item.')
+  setTimeout(() => $('#modal-feedback').text(''), 2500)
+}
+
+const onCreateItemFailure = () => {
+  $('#modal-feedback').text('Error creating item.')
+  setTimeout(() => $('#modal-feedback').text(''), 2500)
 }
 
 const onDestroySuccess = function () {
@@ -59,5 +65,6 @@ module.exports = {
   onIndexFailure,
   onUpdateSuccess,
   onUpdateFailure,
-  onDestroySuccess
+  onDestroySuccess,
+  onCreateItemFailure
 }
