@@ -17,14 +17,6 @@ const onAddItem = event => {
     .catch(ui.onCreateItemFailure)
 }
 
-const onIndexStorefrontItems = function (event) {
-  event.preventDefault()
-
-  api.index()
-    .then(ui.getStorefrontItemsSuccess)
-    .catch(ui.onIndexFailure)
-}
-
 const onUpdateItem = function (event) {
   event.preventDefault()
 
