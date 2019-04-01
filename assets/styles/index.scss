@@ -1,1 +1,95 @@
 @import '~bootstrap/scss/bootstrap';
+$black: black;
+$maroon: maroon;
+$green: green;
+$olive: olive;
+$navy: navy;
+$purple: purple;
+$teal: teal;
+$silver: silver;
+$gray: gray;
+$red: red;
+$lime: lime;
+$yellow: yellow;
+$blue: blue;
+$fuchsia: fuchsia;
+$aqua: aqua;
+$white: white;
+
+body {
+  background-color: $navy;
+  color: $white;
+  font-family: monospace;
+}
+
+form {
+  .auth-toggle {
+    color: $teal;
+    user-select: none;
+    &:hover {
+      color: $aqua;
+    }
+
+    &:active {
+      color: $yellow;
+    }
+  }
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  td {
+    border-right: 4px solid $white;
+    padding: 8px;
+  }
+  th {
+    background-color: $aqua;
+    color: $black;
+    padding: 8px;
+  }
+  tr {
+    &:hover {
+      background-color: $gray;
+    }
+  }
+  .button-column {
+    border-right: 0;
+  }
+}
+
+.modal {
+  color: $blue;
+}
+
+.form {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.button {
+  background-color: $teal;
+  border: 0;
+  color: $black;
+  display: inline-block;
+  font-size: 16px;
+  margin: 0 0.5rem;
+  padding: 0.25rem 1rem;
+  text-align: center;
+  text-decoration: none;
+
+  &:hover {
+    background-color: $aqua;
+  }
+
+  &:active {
+    background-color: $yellow;
+  }
+}
+
+.storefront-table {
+  display: flex;
+  justify-content: center;
+  margin: 2.5rem;
+}
