@@ -3,6 +3,7 @@
 const getFormFields = require('../../../lib/get-form-fields.js')
 const api = require('./api.js')
 const ui = require('./ui.js')
+const events = require('../storefront-items/events.js')
 
 // SIGN IN
 const onSignIn = event => {
@@ -11,7 +12,11 @@ const onSignIn = event => {
   const formData = getFormFields(event.target)
 
   api.signIn(formData)
-    .then(ui.signInSuccess)
+    .then(function (responseData) {
+      ui.signInSuccess(responseData)
+      events.reindex()
+    })
+    // .then(ui.signInSuccess)
     .catch(ui.errorMessage)
 }
 

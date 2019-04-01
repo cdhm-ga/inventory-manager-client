@@ -10,7 +10,10 @@ const onAddItem = event => {
   const formData = getFormFields(event.target)
 
   api.createItem(formData)
-    .then(ui.createItemSuccess)
+    .then(function () {
+      ui.createItemSuccess()
+      reindex()
+    })
     .catch(ui.errorMessage)
 }
 
@@ -30,7 +33,10 @@ const onUpdateItem = function (event) {
   const id = $(event.target).data('id')
 
   api.update(formData, id)
-    .then(ui.onUpdateSuccess)
+    .then(function () {
+      ui.onUpdateSuccess()
+      reindex()
+    })
     .catch(ui.onUpdateFailure)
 }
 
@@ -40,7 +46,16 @@ const onDeleteItem = function (event) {
   const id = $(event.target).data('id')
 
   api.destroy(id)
-    .then(ui.onDestroySuccess)
+    .then(function () {
+      ui.onDestroySuccess()
+      reindex()
+    })
+    .catch(ui.errorMessage)
+}
+
+const reindex = () => {
+  api.index()
+    .then(ui.getStorefrontItemsSuccess)
     .catch(ui.errorMessage)
 }
 
@@ -53,5 +68,6 @@ const eventHandlers = () => {
 }
 
 module.exports = {
-  eventHandlers
+  eventHandlers,
+  reindex
 }
