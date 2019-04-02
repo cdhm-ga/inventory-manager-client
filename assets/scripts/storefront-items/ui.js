@@ -3,7 +3,7 @@ const showItemsTemplate = require('../templates/storefront_item.handlebars')
 
 // runs when storefront item is successfully created
 const createItemSuccess = formData => {
-  userFeedback('Item added to inventory.')
+  userFeedback('The inventory has been updated.')
   clearForms()
   $('#new-inventory-item-modal').modal('hide')
 }
